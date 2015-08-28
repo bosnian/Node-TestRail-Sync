@@ -1,4 +1,5 @@
 request = require("request")
+deasync = require("deasync")
 
 API_ROUTE = "/index.php?/api/v2/"
 
@@ -22,13 +23,21 @@ class TestRail
     # @return [callback] The callback
     #
     closeCommand: (command, id, callback) ->
+        result = undefined
         request.post(
             uri: this.getFullHostName() + command + id
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
 
     # Used to get an object in the API by the ID
@@ -39,13 +48,21 @@ class TestRail
     # @return [callback] The callback
     #
     getIdCommand: (command , id, callback) ->
+        result = undefined
         request.get(
             uri: this.getFullHostName() + command + id
             headers:
                 "content-type": "application/json"
             ,(err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
 
     # Used to get an object in the API
@@ -55,43 +72,75 @@ class TestRail
     # @return [callback] The callback
     #
     getCommand: (command, callback) ->
+        result = undefined
         request.get(
             uri: this.getFullHostName() + command
             headers:
                 "content-type": "application/json"
             ,(err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
 
     getExtraCommand: (command, id, extra, callback) ->
+        result = undefined
         request.get(
             uri: this.getFullHostName() + command + id + extra
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
     addCommand: (command, id, postData, callback) ->
+        result = undefined
         request.post(
             uri: this.getFullHostName() + command + id
             headers:
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
     addExtraCommand: (command, id, extra, postData, callback) ->
+        result = undefined
         request.post(
             uri: this.getFullHostName() + command + id + extra,
             headers:
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                callback(body)
+                result = JSON.parse(body)
+                if callback
+                  callback result
+                return
         ).auth( @user, @password, true)
+        if callback == undefined
+          while result == undefined
+            deasync.runLoopOnce()
+        result
 
     sendCommand: (projectID, command, json) ->
         request.post(

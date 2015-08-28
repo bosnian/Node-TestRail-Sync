@@ -1,31 +1,48 @@
-Node-TestRail
+Node-TestRail-Sync
 =========
 
 
-!["npm badge"](https://nodei.co/npm/node-testrail.png)
+!["npm badge"](https://nodei.co/npm/node-testrail-sync.png)
 
-Node-TestRail is an api wrapper for TestRail. It contains an easy way to interact with all of the API commands for version 2 of the testrail API.
+Node-TestRail-Sync is a synchronous api wrapper for TestRail, which is based on [Node-TestRail](https://github.com/Stewart-Taylor/Node-TestRail). It contains an easy way to interact with all of the API commands for version 2 of the testrail API.
 
     http://docs.gurock.com/testrail-api2/start
+
+#### Note: It is also possible to use it async with callbacks, but all parameters have to be passed.
 
 How to use (Examples)
 ----
 ```javascript
-var TestRail = require("node-testrail");
+var TestRail = require("node-testrail")
 
-var testrail = new TestRail("https://example.testrail.com/", "email@example.com", "password");
+var testrail = new TestRail("https://example.testrail.com/", "email@example.com", "password")
 
+
+//ASYNC
 testrail.addResult(TEST_ID, STATUS_ID, COMMENT, VERSION, ELAPSED_TIME, DEFECTS, ASSIGNEDTO_ID, function(body) {
-    console.log(body);
-});
+    console.log(body)
+})
+//SYNC
+var resultResponse = testrail.addResult(TEST_ID, STATUS_ID, COMMENT)
+console.log(resultResponse)
 
+
+//ASYNC
 testrail.getUserByEmail(EMAIL, function(user) {
-    console.log(user);
-});
+    console.log(user)
+})
+//SYNC
+var user = testrail.getUserByEmail(EMAIL)
+console.log(user)
 
+
+//ASYNC
 testrail.getTest(TEST_ID, function(test) {
-    console.log(test);
-});
+    console.log(test)
+})
+//SYNC
+var test = testrail.getTest(TEST_ID)
+console.log(test)
 ```
 
 All the helper functions can be found under src within testrail.coffee
