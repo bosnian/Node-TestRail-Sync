@@ -1,14 +1,14 @@
 {
   "name": "node-testrail-sync",
   "description": "A synchronous API wrapper for TestRail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "Ammar Hadzic",
     "email": "ammar.hadzic@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bosnian/Node-TestRail.git"
+    "url": "https://github.com/bosnian/Node-TestRail-Sync.git"
   },
   "main": "lib/testrail.js",
   "scripts": {

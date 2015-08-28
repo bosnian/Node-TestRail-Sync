@@ -29,7 +29,12 @@ class TestRail
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
@@ -54,7 +59,12 @@ class TestRail
             headers:
                 "content-type": "application/json"
             ,(err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
@@ -78,7 +88,12 @@ class TestRail
             headers:
                 "content-type": "application/json"
             ,(err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
@@ -96,7 +111,12 @@ class TestRail
             headers:
                 "content-type": "application/json"
             , (err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
@@ -114,7 +134,12 @@ class TestRail
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
@@ -132,7 +157,12 @@ class TestRail
                 "content-type": "application/json"
             body: postData
             , (err, res, body) ->
-                result = JSON.parse(body)
+                if body == ""
+                  result = null
+                else if err
+                  result = error: err
+                else
+                  result = JSON.parse(body)
                 if callback
                   callback result
                 return
