@@ -298,10 +298,11 @@ class TestRail
     getPlans: (project_id, callback) ->
         this.getIdCommand("get_plans/",project_id, callback)
 
-    addPlan: (project_id, name, description, milestone_id, callback) ->
+    addPlan: (project_id, name, description, milestone_id, entries, callback) ->
         json = {}
         json.name = name
         json.description = description
+        json.entries = entries
         json.milestone_id = milestone_id
         this.addCommand("add_plan/", project_id, JSON.stringify(json), callback)
 
