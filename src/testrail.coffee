@@ -397,7 +397,7 @@ class TestRail
         this.addCommand("add_result/", test_id,  JSON.stringify(json), callback)
 
      addResults: (run_id, results, callback) ->
-        this.addExtraCommand("add_results/", run_id,  JSON.stringify(results), callback)
+        this.addExtraCommand("add_results/", run_id, "" , JSON.stringify(results), callback)
 
     addResultForCase: (run_id, case_id, status_id, comment, version, elapsed, defects, assignedto_id, callback) ->
         json = {}
@@ -410,7 +410,7 @@ class TestRail
         this.addExtraCommand("add_result_for_case/", run_id, ("/" + case_id),  JSON.stringify(json), callback)
 
     addResultsForCases: (run_id, results, callback) ->
-        this.addExtraCommand("add_results_for_cases/", run_id,  JSON.stringify(results), callback)
+        this.addExtraCommand("add_results_for_cases/", run_id, "", JSON.stringify(results), callback)
 
     #-------- RESULT FIELDS ---------------------
 
